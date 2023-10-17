@@ -8,20 +8,33 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+body {
+  background: #FFFCEF;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+html {
+  scroll-behavior: smooth;
 }
+/* style : {
+  --react-international-phone-border-radius : 0
+  --react-international-phone-border-color : "gray"
+  --react-international-phone-background-color : "#282c34"
+  --react-international-phone-text-color : "white"
+  --react-international-phone-selected-dropdown-item-background-color : "black"
+  --react-international-phone-country-selector-background-color-hover : "black"
+  } */
+.hello:focus {
+  border-color: green;
+}
+
+
+/*
+:root {
+  --purple-shade: 180; /* Adjust this value for your desired shade 
+}
+
+/* Use the CSS variable to apply the filter effect 
+.filter-purple-shade {
+  filter: contrast(var(--purple-shade, 180%)) sepia(100%) saturate50%) hue-rotate(270deg);
+}
+*/

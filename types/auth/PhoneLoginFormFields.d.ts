@@ -1,0 +1,3 @@
+interface PhoneLoginFormFields {
+    phoneNumber: string;
+}
