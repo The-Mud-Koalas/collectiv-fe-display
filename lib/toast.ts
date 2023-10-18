@@ -5,4 +5,4 @@ interface ErrorToastProps {
     customMessage?: string;
 }
 
-export const showErrorToast = ({ error, customMessage }: ErrorToastProps) => toast.error(customMessage ?? (error.cause as { message: string }).message as string);
+export const showErrorToast = ({ error, customMessage }: ErrorToastProps) => toast.error(customMessage ?? (error?.cause as { message: string })?.message as string);

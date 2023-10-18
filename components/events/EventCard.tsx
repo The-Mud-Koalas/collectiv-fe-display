@@ -91,7 +91,7 @@ const EventCard: React.FC<Props> = ({ event }) => {
             href={`/event/${id}`}
             className="bg-primary-800 py-2 px-4 rounded-full medium text-base text-primary-300"
           >
-            Check Events
+            Check Event
           </Link>
         </div>
       </div>

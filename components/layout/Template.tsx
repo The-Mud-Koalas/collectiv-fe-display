@@ -3,6 +3,8 @@ import CollectivLogoHorizontal from '../svg/logo/CollectivLogoHorizontal';
 import cn from "clsx";
 import { inter } from '@/utils/constants/fonts';
 import Link from 'next/link';
+import { ToastContainer } from 'react-toastify';
+import "react-toastify/dist/ReactToastify.css";
 
 interface Props extends React.PropsWithChildren {}
 
@@ -21,6 +23,7 @@ const Template: React.FC<Props> = ({ children }) => {
     <main>
         { children }
     </main>
+    <ToastContainer />
     </>
   )
 }

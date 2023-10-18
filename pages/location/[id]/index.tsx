@@ -47,7 +47,7 @@ const LocationHomePage = ({
         <h4 className={cn(garamond.className, "font-normal text-2xl px-10")}>
           Activities on the space
         </h4>
-        <div className="flex gap-3 pl-10 overflow-x-auto">
+        <div className="flex gap-3 pl-10 overflow-x-auto scrollbar-react-international-phone-country-selector">
           {events.results.map((event) => (
             <EventCard event={event} key={event.id} />
           ))}
