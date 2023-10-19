@@ -3,19 +3,14 @@ import Image from "next/image";
 import cn from "clsx";
 import { AiOutlineCalendar } from "react-icons/ai";
 import { CiLocationOn } from "react-icons/ci";
-import { getRequest, postRequest } from "@/lib/fetch";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { capitalize } from "@/utils/helpers/formatting/capitalize";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { toast } from "react-toastify";
-import { showErrorToast } from "@/lib/toast";
 import RegisterParticipantModal from "./RegisterParticipantModal";
 import Modal from "../elements/Modal";
 import VolunteerParticipantModal from "./VolunteerParticipantModal";
 
-const REFETCH_INTERVAL_SECONDS = 30;
 interface Props {
   eventDetails: EventDetail;
 }
@@ -24,62 +19,6 @@ const EventInfoAndActions = ({ eventDetails }: Props) => {
   const BASE_URL = `/event/${eventDetails.id}`;
 
   const router = useRouter();
-
-  const queryClient = useQueryClient();
-
-  // const currentEvent = useQuery({
-  //   queryKey: ["current-event"],
-  //   queryFn: async () => {
-  //     if (!user) return null;
-  //     const token = await user.getIdToken();
-  //     const response = await getRequest({
-  //       endpoint: `/user/current-event`,
-  //       token,
-  //     });
-  //     return response;
-  //   },
-  //   refetchInterval: REFETCH_INTERVAL_SECONDS * 1000,
-  // });
-
-  // const participation = useQuery({
-  //   queryKey: ["participation", user?.uid, eventDetails.id],
-  //   queryFn: getParticipation(user, eventDetails.id),
-  //   enabled: !!user?.uid,
-  // });
-
-  const registerParticipant = useMutation({
-    mutationFn: async () => {
-      // if (!user) return;
-      // const token = await user.getIdToken();
-      // await postRequest({
-      //   endpoint: "/participation/participant/register",
-      //   token,
-      //   body: {
-      //     event_id: eventDetails.id,
-      //   },
-      // });
-    },
-    onSuccess: () =>
-      toast.success(`You have successfully registed to ${eventDetails.name}.`),
-    onError: (error: Error) => showErrorToast({ error }),
-  });
-  const registerVolunteer = useMutation({
-    mutationFn: async () => {
-      // if (!user) return;
-      // const token = await user.getIdToken();
-      // await postRequest({
-      //   endpoint: "/participation/volunteer/register",
-      //   token,
-      //   body: {
-      //     event_id: eventDetails.id,
-      //   },
-      // });
-    },
-  });
-
-  const handleRegisterAsParticipant = async () => {};
-
-  const handleRegisterAsVolunteer = async () => {};
 
   const closeModal = () => {
     router.push(BASE_URL, undefined, { shallow: true });

@@ -1,0 +1,3 @@
+interface EventReportFields {
+    remarks: string;
+}

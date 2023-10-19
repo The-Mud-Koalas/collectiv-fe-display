@@ -8,6 +8,7 @@ import { useRouter } from "next/router";
 import { useWindowSize } from "@/hooks/display";
 import { BREAKPOINTS } from "@/utils/constants/breakpoints";
 import { capitalize } from "@/utils/helpers/formatting/capitalize";
+import { FiArrowUpRight } from "react-icons/fi";
 
 interface Props {
   event: EventDetail;
@@ -45,7 +46,9 @@ const EventCard: React.FC<Props> = ({ event }) => {
           )}
         </p>
         <div>
-          <div className="bg-primary-300 text-primary-800 px-5 py-1 text-sm rounded-full font-medium">{capitalize(event.event_type)}</div>
+          <div className="bg-primary-300 text-primary-800 px-5 py-1 text-sm rounded-full font-medium">
+            {capitalize(event.event_type)}
+          </div>
         </div>
       </div>
       <h2 className="font-semibold text-base bg-secondary-200 w-fit">{name}</h2>
@@ -86,12 +89,13 @@ const EventCard: React.FC<Props> = ({ event }) => {
             user{current_num_of_participants > 1 && "s"} have registered
           </p>
         </div>
-        <div className="flex gap-2 items-center self-center">
+        <div className="flex gap-2 items-center self-end">
           <Link
             href={`/event/${id}`}
-            className="bg-primary-800 py-2 px-4 rounded-full medium text-base text-primary-300"
+            className="bg-primary-800 py-2 px-4 rounded-full medium text-base text-primary-300 flex items-center gap-2"
           >
             Check Event
+            <FiArrowUpRight className="font-bold" />
           </Link>
         </div>
       </div>

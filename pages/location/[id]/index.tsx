@@ -9,6 +9,7 @@ import {
 } from "@/utils/fetchers/location";
 import { GetServerSideProps, InferGetServerSidePropsType } from "next/types";
 import EventCard from "@/components/events/EventCard";
+import LocationAnalytics from "@/components/location/LocationAnalytics";
 
 export const getServerSideProps = (async (context) => {
   try {
@@ -43,11 +44,19 @@ const LocationHomePage = ({
           {currentLocation.name}
         </h1>
       </section>
-      <section id="activities-list" className="py-4">
-        <h4 className={cn(garamond.className, "font-normal text-4xl px-10")}>
+      <section className="py-4 px-10">
+        <h2 className={cn(garamond.className, "font-normal text-4xl mb-2")}>
+          Communal space health
+        </h2>
+        {typeof currentLocation.id === "string" && (
+          <LocationAnalytics locationId={currentLocation.id} />
+        )}
+      </section>
+      <section id="activities-list" className="py-4 px-10">
+        <h4 className={cn(garamond.className, "font-normal text-4xl mb-2")}>
           Activities on the space
         </h4>
-        <div className="flex gap-3 pl-10 flex-wrap scrollbar-react-international-phone-country-selector">
+        <div className="flex gap-3 flex-wrap">
           {events.results.map((event) => (
             <EventCard event={event} key={event.id} />
           ))}

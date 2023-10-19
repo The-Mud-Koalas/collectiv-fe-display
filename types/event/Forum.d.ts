@@ -24,11 +24,14 @@ interface ForumTopWords {
 interface ForumAnalytics {
     sentiment_score: number | null;
     top_words: ForumTopWords;
+    num_posts: number;
+    num_trending_posts: number;
 }
 
 interface TrendingForums {
     'event_id': string,
     'event_name': string,
+    'event_location_id': string,
     'event_location_name': string,
     'forum_top_words': ForumTopWords,
     'forum_trending_posts': ForumPost[],

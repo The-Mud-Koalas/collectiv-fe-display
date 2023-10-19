@@ -4,6 +4,7 @@ const useGPSLocation = () => {
   const [lat, setLat] = useState<number | null>(null);
   const [lng, setLng] = useState<number | null>(null);
   const [isGettingGPS, setGettingGPS] = useState(false);
+  const [isPermissionRejected, setIsPermissionRejected] = useState(false)
 
   const getCoords = useCallback(async () => {
     setGettingGPS(true)
@@ -11,18 +12,21 @@ const useGPSLocation = () => {
       (resolve, reject) =>
         navigator.geolocation.getCurrentPosition(resolve, reject)
     );
-
-    const coords = await gpsPromise;
-    setLat(coords.coords.latitude);
-    setLng(coords.coords.longitude);
-    setGettingGPS(false)
+    try {
+      const coords = await gpsPromise;
+      setLat(coords.coords.latitude);
+      setLng(coords.coords.longitude);
+      setGettingGPS(false)
+    } catch {
+      setIsPermissionRejected(true);
+    };
   }, []);
 
   useEffect(() => {
     getCoords();
   }, [getCoords]);
 
-  return { lat, lng, getCoords, isGettingGPS };
+  return { lat, lng, getCoords, isGettingGPS, isPermissionRejected };
 };
 
 export { useGPSLocation };

@@ -1,11 +1,6 @@
-type EventStatus =
-  | "Scheduled"
-  | "Cancelled"
-  | "Ongoing"
-  | "Cancelled"
-  | "Completed";
+type EventStatus = "Scheduled" | "On Going" | "Cancelled" | "Completed";
 
-type EventType = "Project" | "Initiative";
+type EventType = "project" | "initiative";
 
 interface Tag {
   id: string;
@@ -18,9 +13,8 @@ interface Category {
 }
 
 interface Transaction {
-  project_id: string;
-  transaction_time: string;
-  transaction_value: number;
+  timestamp: string;
+  contribution: number;
 }
 
 interface BaseEventDetail {
@@ -29,7 +23,6 @@ interface BaseEventDetail {
   description: string;
   status: "Scheduled" | "On Going" | "Completed" | "Cancelled";
   event_category: Category;
-  min_num_of_volunteers: number;
   event_location: EventLocation;
   event_creator_id: string;
   event_start_date_time: string;
@@ -108,7 +101,22 @@ interface BaseUpdateEventDetail {
   progress: number;
 }
 
-
 interface UpdateInitiativeEventDetail extends BaseUpdateEventDetail {
   participant_registration_enabled: boolean;
 }
+
+interface BaseEventAnalytics {
+  average_sentiment_score: number;
+  average_event_rating: number;
+}
+
+type ProjectAnalytics = ProjectDetail & BaseEventAnalytics;
+
+type InitiativeAnalytics = InitiativeDetail &
+  BaseEventAnalytics & {
+    number_of_attending_participants: number;
+    average_participant_attendance_duration: number;
+    registration_history: { registration_date: string; count: number }[];
+  };
+
+type EventAnalytics = ProjectAnalytics | InitiativeAnalytics
