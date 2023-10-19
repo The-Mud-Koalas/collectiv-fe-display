@@ -17,7 +17,7 @@ interface Props {
 const VOLUNTEER_REQUIREMENTS = [
   { id: "vol-1", text: "Demonstrate great commitment." },
   { id: "vol-2", text: "Exhibit strong communication skills." },
-  { id: "vol-3", text: "Clearly express your Mmotivation and availability" },
+  { id: "vol-3", text: "Clearly express your Motivation and availability" },
   { id: "vol-4", text: "Being honest and minimizing foulplay." },
 ];
 
@@ -70,7 +70,7 @@ const VolunteerParticipantModal: React.FC<Props> = ({
               "text-secondary-500 font-semibold text-base"
             )}
           >
-            Use the email or phone you signed up with
+            Use email/phone number to register
           </p>
           <div
             className={cn(
@@ -101,6 +101,17 @@ const VolunteerParticipantModal: React.FC<Props> = ({
               Phone
             </motion.button>
           </div>
+        </div>
+        <div className="w-full bg-secondary-200 flex items-center gap-3 px-5 py-2 rounded-lg mt-4">
+          <p
+            className={cn(
+              inter.className,
+              "text-secondary-500 font-semibold text-base"
+            )}
+          >
+            If you don&apos;t have an account, just enter the same details, an
+            account will be created for you
+          </p>
         </div>
       </div>
       <AnimatePresence mode="popLayout">

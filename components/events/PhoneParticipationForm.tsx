@@ -68,7 +68,7 @@ const PhoneParticipationForm: React.FC<Props> = ({
       await signOut(auth);
     },
     onSuccess: () =>
-      toast.success(`You have successfully registed to ${eventDetails.name}.`),
+      toast.success(`You have successfully registered to ${eventDetails.name}.`),
     retry: false,
   });
 
